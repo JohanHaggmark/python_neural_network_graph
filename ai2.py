@@ -74,17 +74,14 @@ for j in range(1000):
      #forward####
     hidden_layer2 =  sigmoid(np.dot(inputdata_layer1, weights_layer1))
     output_layer3 = sigmoid(np.dot(hidden_layer2, weights_layer2))
-      #############
+    #############
 
+    
     errorcheck_layer3 = facit - output_layer3
     delta_layer3 = errorcheck_layer3 * sigmoidprime(output_layer3)
     errorcheck_layer2 = delta_layer3.dot(weights_layer2.T)
     
     delta_layer2 = errorcheck_layer2 * sigmoidprime(hidden_layer2)
-
-    if(j % 100) == 0:
-        print("error: " + str(np.mean(np.abs(errorcheck_layer3))))
-    
       
     weights_layer2 += hidden_layer2.T.dot(delta_layer3)
     weights_layer1 += inputdata_layer1.T.dot(delta_layer2)   
@@ -100,3 +97,4 @@ print("output for this trash: ")
 print(output_layer3)
 #buildWeights(weights_layer1, weights_layer2)
 
+#https://www.youtube.com/watch?v=h3l4qz76JhQ
